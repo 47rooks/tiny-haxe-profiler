@@ -1,0 +1,8 @@
+-cp src
+-cp lib
+-cp tests
+-main TestMain
+-js export/js/main.js
+-D analyzer-optimize
+-dce full
+-lib utest

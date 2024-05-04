@@ -1,0 +1,10 @@
+-cp src
+-cp lib
+-cp tests
+-main TestMain
+-cpp export/cpp
+-D analyzer-optimize
+-dce full
+#-D HXCPP_VERBOSE
+-D HXCPP_M64
+-lib utest

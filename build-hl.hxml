@@ -1,0 +1,8 @@
+-cp src
+-cp lib
+-cp tests
+-main TestMain
+-hl export/hl/main.hl
+-D analyzer-optimize
+-dce full
+-lib utest

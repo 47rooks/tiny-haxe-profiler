@@ -1,0 +1,16 @@
+{
+	"name": "tiny-profiler",
+	"url": "https://github.com/47rooks/tiny-haxe-profiler",
+	"license": "MIT",
+	"tags": [
+		"instrument",
+		"profiler"
+	],
+	"description": "A tiny profiler for Haxe",
+	"version": "0.1.0",
+	"releasenote": "",
+	"contributors": [
+		"47rooks"
+	],
+	"classPath": "src"
+}
