@@ -1,9 +1,10 @@
 package;
 
-import TinyProfiler.EventType;
-import TinyProfiler.events;
-import TinyProfiler.tpEnterFunc;
-import TinyProfiler.tpExitFunc;
+import tinyprofiler.TinyProfiler.TPEventType;
+import tinyprofiler.TinyProfiler.events;
+import tinyprofiler.TinyProfiler.tpEnterFunc;
+import tinyprofiler.TinyProfiler.tpExitFunc;
+import tinyprofiler.TinyProfiler.tpInit;
 import utest.Assert;
 import utest.Test;
 
@@ -13,14 +14,16 @@ import utest.Test;
 @:access(TinyProfiler)
 class TinyProfilerTests extends Test {
 	public function testTpEnterFunc() {
+		tpInit();
 		tpEnterFunc(1);
 		Assert.equals(1, events[0].param);
-		Assert.equals(EventType.ENTER_FUNCTION, events[0].param);
+		Assert.equals(TPEventType.ENTER_FUNCTION, events[0].param);
 	}
 
 	public function testTpExitFunc() {
+		tpInit();
 		tpExitFunc(1);
 		Assert.equals(1, events[0].param);
-		Assert.equals(EventType.EXIT_FUNCTION, events[0].param);
+		Assert.equals(TPEventType.EXIT_FUNCTION, events[0].param);
 	}
 }

@@ -1,12 +1,14 @@
-package;
+package tinyprofiler;
 
 import haxe.Int64;
+#if sys
 import sys.io.File;
+#end
 
 /**
  * The event types for which timings may be collected.
  */
-enum EventType {
+enum TPEventType {
 	/**
 	 * Must be called for each function of interest. Must be paired
 	 * with EXIT_FUNCTION events.
@@ -24,8 +26,8 @@ enum EventType {
  * A single event timing record.
  */
 @:structInit
-class Event {
-	public var type:EventType;
+class TPEvent {
+	public var type:TPEventType;
 	public var time:Int64;
 
 	/**
@@ -46,11 +48,11 @@ final UPDATE = metricId++;
 final DRAW = metricId++;
 final QUADTREE_DESTROY = metricId++;
 final FLXSPRITE_DRAW = metricId++;
-var events:Array<Event>;
+var events:Array<TPEvent>;
 var eventNames:Array<String>;
 
 function tpInit():Void {
-	events = new Array<Event>();
+	events = new Array<TPEvent>();
 	eventNames = new Array<String>();
 	eventNames[ON_ENTER_FRAME] = 'flixel.FlxGame.onEnterFrame';
 	eventNames[UPDATE] = 'flixel.FlxGame.update';
@@ -82,6 +84,7 @@ typedef ChromeTEF = {
 	var tid:Int;
 }
 
+#if sys
 /**
  * Create a Google Trace Event Format output readable with Chrome Tracing.
  * 
@@ -129,3 +132,4 @@ function tpOutputChromeTracing():Void {
 	evtFile.writeString(']}');
 	evtFile.close();
 }
+#end

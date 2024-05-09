@@ -1,6 +1,6 @@
 package;
 
-import Timing;
+import tinyprofiler.Timing;
 import utest.Assert;
 import utest.Test;
 

@@ -1,4 +1,4 @@
-package;
+package tinyprofiler;
 
 import haxe.Int64;
 import haxe.Timer;
@@ -27,7 +27,7 @@ extern class Timing {
 	 * 
 	 * @return Int64 number of microseconds. 
 	 */
-	@:native("Timing::get_hirestime") public static function get_hirestime():Int64;
+	public static function get_hirestime():Int64;
 }
 #elseif hl
 @:hlNative("tpLib")

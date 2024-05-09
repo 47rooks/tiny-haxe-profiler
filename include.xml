@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension>
+
+    <!-- <dependency path="lib/tpLib/x64/Debug/tpLib.hdll" if="windows hl" unless="static_link" /> -->
+    <!-- This works but requires that the libs are in /ndll directory hierarchy like lime -->
+    <!-- <ndll name="tpLib" unless="static_link" /> -->
+    <!-- <ndll name="tpLib" if="windows hl" unless="static_link" /> -->
+    <!-- <dependency path="lib/tpLib/x64/Debug/tpLib.dll" if="windows cpp" unless="static_link" /> -->
+    <!-- <haxeflag name="-I" value="${haxelib:tiny-profiler}/lib/tpLib" /> -->
+    <!-- <dependency path="lib/tpLib/timing.h" if="windows cpp" unless="static_link" /> -->
+    <!-- <?xml version="1.0" encoding="utf-8"?>
+    <files id="haxe">
+        <compilerflag value="-I${haxelib:tiny-profiler}/lib/tpLib" />
+    </files>
+    </xml> -->
+</extension>

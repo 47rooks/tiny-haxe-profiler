@@ -6,3 +6,4 @@
 -D analyzer-optimize
 -dce full
 -lib utest
+-D UTEST_PRINT_TESTS

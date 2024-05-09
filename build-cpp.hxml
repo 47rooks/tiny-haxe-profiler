@@ -5,6 +5,7 @@
 -cpp export/cpp
 -D analyzer-optimize
 -dce full
-#-D HXCPP_VERBOSE
+# -D HXCPP_VERBOSE
 -D HXCPP_M64
 -lib utest
+-D UTEST_PRINT_TESTS
