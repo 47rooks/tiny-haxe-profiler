@@ -1,4 +1,3 @@
--cp src
 -cp lib
 -cp tests
 -main TestMain
