@@ -4,6 +4,6 @@
         It is referred to by @:buildXml metadata in the cpp code.
     -->
     <copyFile name="tpLib.dll"
-        from="${haxelib:tiny-profiler}\\lib\\tpLib\\x64\\Debug\\"
+        from="${haxelib:tiny-profiler}\\ndll\\Windows64\\"
         overwrite="true" toolid="haxelink" />
 </xml>

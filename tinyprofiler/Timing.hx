@@ -23,7 +23,7 @@ import hl.I64;
 		tinyprofiler.xml plugs in additional build support as needed.
 	  -->
     <target  id="haxe">
-        <lib name="${haxelib:tiny-profiler}\\lib\\tpLib\\x64\\Debug\\tpLib.lib" if="windows"/>
+        <lib name="${haxelib:tiny-profiler}\\lib\\tpLib\\x64\\Release\\tpLib.lib" if="windows"/>
 	</target>
 	<files id="haxe">
 		<compilerflag value="-I${haxelib:tiny-profiler}/lib/tpLib" tags="haxe" />
