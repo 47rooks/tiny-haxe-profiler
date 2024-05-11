@@ -2,3 +2,4 @@ export/
 .haxelib/
 **/x64/
 **/.vs
+ndll/

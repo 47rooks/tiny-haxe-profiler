@@ -11,13 +11,27 @@ import hl.I64;
  * Externs/extensions are expected to be written by platform and target as required.
  */
 #if cpp
-@:include("..\\..\\..\\lib\\tpLib\\timing.h")
+// @formatter:off
+@:include("timing.h")
 @:buildXml('
+    <!--
+	    tiny-profiler support for HXCPP builds
+
+		The <lib tpLib.lib> is required for Windows builds.
+		The compilerflag add the tpLib directory to the include path so that the
+		"timing.h" header file can be found.
+		tinyprofiler.xml plugs in additional build support as needed.
+	  -->
     <target  id="haxe">
-    <lib name="..\\..\\..\\lib\\tpLib\\x64\\Debug\\tpLib.lib"/>
+        <lib name="${haxelib:tiny-profiler}\\lib\\tpLib\\x64\\Debug\\tpLib.lib" if="windows"/>
 	</target>
+	<files id="haxe">
+		<compilerflag value="-I${haxelib:tiny-profiler}/lib/tpLib" tags="haxe" />
+	</files>
+	<include name="${haxelib:tiny-profiler}\\buildsupport\\tinyprofiler.xml" />
 ')
 @:native("Timing")
+// @formatter:on
 extern class Timing {
 	/**
 	 * Get microsecond times for C++.

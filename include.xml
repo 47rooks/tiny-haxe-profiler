@@ -1,16 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension>
+    <!-- This file provides support for Lime builds -->
 
-    <!-- <dependency path="lib/tpLib/x64/Debug/tpLib.hdll" if="windows hl" unless="static_link" /> -->
-    <!-- This works but requires that the libs are in /ndll directory hierarchy like lime -->
-    <!-- <ndll name="tpLib" unless="static_link" /> -->
-    <!-- <ndll name="tpLib" if="windows hl" unless="static_link" /> -->
-    <!-- <dependency path="lib/tpLib/x64/Debug/tpLib.dll" if="windows cpp" unless="static_link" /> -->
-    <!-- <haxeflag name="-I" value="${haxelib:tiny-profiler}/lib/tpLib" /> -->
-    <!-- <dependency path="lib/tpLib/timing.h" if="windows cpp" unless="static_link" /> -->
-    <!-- <?xml version="1.0" encoding="utf-8"?>
-    <files id="haxe">
-        <compilerflag value="-I${haxelib:tiny-profiler}/lib/tpLib" />
-    </files>
-    </xml> -->
+    <!-- 
+        Copy the tpLib HDLL for Hashlink builds
+     -->
+    <ndll name="tpLib" if="hl" unless="static_link" />
+    <!-- 
+        Copy tpLib DLL for Lime CPP builds on Windows.
+     -->
+    <dependency path="ndll/Windows64/tpLib.dll" if="windows cpp" unless="static_link" />
 </extension>

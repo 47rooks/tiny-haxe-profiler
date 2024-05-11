@@ -38,6 +38,11 @@ Modify the solution propeties to set
 
 Then build the solution and it will create a `main.exe`.
 
+## Using this haxelib in a project
+
+If you use a local haxelib in your project you will need to set HAXEPATH to the project directory, the
+directory containing `.haxelib` before running the build. This is due to issue https://github.com/HaxeFoundation/haxelib/issues/618.
+
 ## References
 
 [1] https://haxe.org/manual/target-hl-c-compilation.html

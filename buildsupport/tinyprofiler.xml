@@ -1,0 +1,9 @@
+<xml>
+    <!-- 
+        This file supports pure HXCPP builds copying the DLL to the output directory.
+        It is referred to by @:buildXml metadata in the cpp code.
+    -->
+    <copyFile name="tpLib.dll"
+        from="${haxelib:tiny-profiler}\\lib\\tpLib\\x64\\Debug\\"
+        overwrite="true" toolid="haxelink" />
+</xml>
