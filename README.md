@@ -85,9 +85,9 @@ an error after it links the exe, with something like
 
 `Error: Could not find build target "Files\\HaxeToolkit433\\haxe\\extraLibs/"`
 
-which is the bit after the space in "Program Files". You can usually ignore this
-as the exe has already been built. Just check in the `export\cpp` directory.
-This is due to a bug in HXCPP command line escaping.
+which is the bit after the space in `Program Files` in the path. You can
+usually ignore this as the exe has already been built. Just check in the
+`export\cpp` directory. This is due to a bug in HXCPP command line escaping.
 
 ### HL/C
 
