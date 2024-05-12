@@ -65,7 +65,7 @@ Currently the following platforms and targets are tested and known to work.
 |cpp|Windows|OK
 |hl|Windows|OK
 |hl/c|Windows|OK
-|js|Windows|OK|js should work on any plaform
+|js|Windows|OK|js should work on any platform
 
 Build support exists for HXCPP and Lime builds. For HL, Lime has enough tooling
 in place to copy the required extern library to the application output location.
