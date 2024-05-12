@@ -2,4 +2,6 @@ export/
 .haxelib/
 **/x64/
 **/.vs
-ndll/
+ndll/**/*.dll
+ndll/**/*.hdll
+ndll/**/*.lib
