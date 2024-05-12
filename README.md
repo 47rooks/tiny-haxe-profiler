@@ -26,6 +26,7 @@ Things to do to make it barely useful
    * support multi-threading
      * this will likely require converting to a class based model
    * support caller defining output file
+   * add example program using this
   
 Later things to add
 
