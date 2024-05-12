@@ -5,3 +5,4 @@ export/
 ndll/**/*.dll
 ndll/**/*.hdll
 ndll/**/*.lib
+*.zip
