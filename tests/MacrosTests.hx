@@ -1,5 +1,6 @@
 package;
 
+#if sys
 import sys.io.Process;
 import utest.Assert;
 import utest.Test;
@@ -118,3 +119,5 @@ class MacrosTests extends Test {
         Assert.equals("", resp.stderr);
     }
 }
+
+#end

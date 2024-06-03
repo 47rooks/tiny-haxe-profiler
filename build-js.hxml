@@ -6,3 +6,4 @@
 -dce full
 -lib utest
 -D UTEST_PRINT_TESTS
+-D tiny-profiler-cfg-file=tests\\data\\macrotestproject\\tp.json

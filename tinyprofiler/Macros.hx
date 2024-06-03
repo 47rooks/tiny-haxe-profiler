@@ -1,4 +1,5 @@
 package tinyprofiler;
+#if macro
 
 import haxe.Json;
 import haxe.macro.Context;
@@ -33,7 +34,7 @@ typedef ConfigData = {
  * @return ConfigData
  */
 function readConfigFile():ConfigData {
-    #if macro
+    var data = null;
     var cfgFilePath = haxe.macro.Context.definedValue('tiny-profiler-cfg-file');
     cfgFilePath = cfgFilePath.trim();
     if (cfgFilePath.startsWith('"')) {
@@ -42,13 +43,9 @@ function readConfigFile():ConfigData {
     if (cfgFilePath.startsWith("'")) {
         cfgFilePath = cfgFilePath.replace("'", "");
     }
-    #else
-    var cfgFilePath = null;
-    #end
     if (cfgFilePath == null) {
         return null;
     }
-    var data;
     try {
         var content = sys.io.File.getContent(cfgFilePath);
         data = Json.parse(content);
@@ -127,3 +124,4 @@ function printExpr(e:Expr) {
             trace('$e');
     }
 }
+#end

@@ -53,7 +53,9 @@ var eventNames:Array<String>;
 @:keep function tpInit():Void {
 	events = new Array<TPEvent>();
 	eventNames = new Array<String>();
+	#if macro
 	tinyprofiler.Macros.createInitializer();
+	#end
 }
 
 function tpEnterFunc(param:Int):Void {

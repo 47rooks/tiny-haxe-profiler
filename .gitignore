@@ -7,3 +7,4 @@ ndll/**/*.hdll
 ndll/**/*.lib
 *.zip
 dump/**
+main.obj
