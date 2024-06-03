@@ -17,13 +17,13 @@ class TinyProfilerTests extends Test {
 		tpInit();
 		tpEnterFunc(1);
 		Assert.equals(1, events[0].param);
-		Assert.equals(TPEventType.ENTER_FUNCTION, events[0].param);
+		Assert.equals(TPEventType.ENTER_FUNCTION, events[0].type);
 	}
 
 	public function testTpExitFunc() {
 		tpInit();
 		tpExitFunc(1);
 		Assert.equals(1, events[0].param);
-		Assert.equals(TPEventType.EXIT_FUNCTION, events[0].param);
+		Assert.equals(TPEventType.EXIT_FUNCTION, events[0].type);
 	}
 }
