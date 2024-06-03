@@ -4,6 +4,7 @@ import haxe.Int64;
 #if sys
 import sys.io.File;
 #end
+import tinyprofiler.EventId;
 
 /**
  * The event types for which timings may be collected.
@@ -39,26 +40,20 @@ class TPEvent {
 
 /**
  * Define all measurable events. 
- * FIXME - this needs to be constructed some other way. It cannot be hardcoded.
  */
-var metricId = 0;
-
-final ON_ENTER_FRAME = metricId++;
-final UPDATE = metricId++;
-final DRAW = metricId++;
-final QUADTREE_DESTROY = metricId++;
-final FLXSPRITE_DRAW = metricId++;
 var events:Array<TPEvent>;
+
 var eventNames:Array<String>;
 
-function tpInit():Void {
+/**
+ * Initialize the profiler tables and load the configuration file. This
+ * must be called before the profiling functions `tpEnterFunc`, `tpExitFunc`
+ * may be called.
+ */
+@:keep function tpInit():Void {
 	events = new Array<TPEvent>();
 	eventNames = new Array<String>();
-	eventNames[ON_ENTER_FRAME] = 'flixel.FlxGame.onEnterFrame';
-	eventNames[UPDATE] = 'flixel.FlxGame.update';
-	eventNames[DRAW] = 'flixel.FlxGame.draw';
-	eventNames[QUADTREE_DESTROY] = 'flixel.system.FlxQuadTree.destroy';
-	eventNames[FLXSPRITE_DRAW] = 'flixel.FlxSprite.draw';
+	tinyprofiler.Macros.createInitializer();
 }
 
 function tpEnterFunc(param:Int):Void {

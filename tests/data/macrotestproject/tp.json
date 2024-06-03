@@ -1,0 +1,14 @@
+{
+    "events": [
+        { "symbol": "ON_ENTER_FRAME",
+        "displayName": "flixel.FlxGame.onEnterFrame"},
+        { "symbol": "UPDATE",
+        "displayName": "flixel.FlxGame.update"},
+        { "symbol": "DRAW",
+        "displayName": "flixel.FlxGame.draw"},
+        { "symbol": "QUADTREE_DESTROY",
+        "displayName": "flixel.system.FlxQuadTree.destroy"},
+        { "symbol": "FLXSPRITE_DRAW",
+        "displayName": "flixel.FlxSprite.draw"}
+    ]
+}
