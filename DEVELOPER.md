@@ -38,6 +38,12 @@ mode.
 All `build-*./hxml` files set `-D UTEST_PRINT_TESTS` so that the unit tests
 are printed as they complete.
 
+Note that you must run the sys executables from the 
+`<tiny-profiler git clone directory>`. Failing to do this will break the
+relative path `Sys.setCwd()` calls in the `MacrosTests` tests. Note also that
+the JS run will not run the macro tests because it does not have filesystem
+access to get the test data files.
+
 ### JS
 
 `haxe build-js/hxml`
@@ -93,8 +99,9 @@ cl.exe /Ox /Feexport\hlc\TestMain.exe -I $env:HASHLINK\include -I "export\hlc"
 
 Before running it you will either need to copy `ndll\Windows64\tpLib.dll` to the 
 `export\hlc` directory or add the
-`<tiny-profiler git clone directory>\ndll\Windows64` directory to the PATH
-variable.
+`<tiny-profiler git clone directory>\ndll\Windows64` directory to the `PATH`
+variable. Similarly you need the `libhl.dll` from the `$env:HASHLINK`  directory
+copied to `export\hlc` or you need to add `$env:HASHLINK` to your `PATH`.
 
 #### Visual Studio
 

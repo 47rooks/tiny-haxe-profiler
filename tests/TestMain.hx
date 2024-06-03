@@ -8,7 +8,9 @@ class TestMain {
 		var runner = new Runner();
 		runner.addCase(new TimingTests());
 		runner.addCase(new TinyProfilerTests());
+		#if sys
 		runner.addCase(new MacrosTests());
+		#end
 		Report.create(runner);
 		runner.run();
 	}

@@ -10,3 +10,4 @@
 -D UTEST_PRINT_TESTS
 -lib tiny-profiler
 # --verbose
+-D tiny-profiler-cfg-file=tests\\data\\macrotestproject\\tp.json
