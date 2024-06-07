@@ -1,10 +1,10 @@
 package tinyprofiler;
 
 import haxe.Int64;
+import tinyprofiler.EventId;
 #if sys
 import sys.io.File;
 #end
-import tinyprofiler.EventId;
 
 /**
  * The event types for which timings may be collected.
@@ -53,9 +53,7 @@ var eventNames:Array<String>;
 @:keep function tpInit():Void {
 	events = new Array<TPEvent>();
 	eventNames = new Array<String>();
-	#if macro
 	tinyprofiler.Macros.createInitializer();
-	#end
 }
 
 function tpEnterFunc(param:Int):Void {
