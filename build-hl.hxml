@@ -7,5 +7,5 @@
 -lib utest
 -D UTEST_PRINT_TESTS
 -D dump=pretty
--D tiny-profiler-cfg-file=tests\\data\\macrotestproject\\tp.json
+-D tiny-profiler-cfg-file=.\\tests\\data\\macrotestproject\\tp.json
 #-D UTEST_PATTERN=MacrosTests.*

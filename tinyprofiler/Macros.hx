@@ -1,17 +1,16 @@
 package tinyprofiler;
-#if macro
 
 import haxe.Json;
+import haxe.ValueException;
 import haxe.macro.Context;
 import haxe.macro.Expr.Access;
 import haxe.macro.Expr.Field;
 import haxe.macro.Expr.FieldType.FFun;
 import haxe.macro.Expr;
-import haxe.ValueException;
 
+using StringTools;
 using haxe.macro.ExprTools;
 using haxe.macro.MacroStringTools;
-using StringTools;
 
 /**
  * Structures to read the JSON configuration file.
@@ -33,30 +32,32 @@ typedef ConfigData = {
  * 
  * @return ConfigData
  */
+#if macro
 function readConfigFile():ConfigData {
-    var data = null;
-    var cfgFilePath = haxe.macro.Context.definedValue('tiny-profiler-cfg-file');
-    cfgFilePath = cfgFilePath.trim();
-    if (cfgFilePath.startsWith('"')) {
-        cfgFilePath = cfgFilePath.replace('"', '');
-    }
-    if (cfgFilePath.startsWith("'")) {
-        cfgFilePath = cfgFilePath.replace("'", "");
-    }
-    if (cfgFilePath == null) {
-        return null;
-    }
-    try {
-        var content = sys.io.File.getContent(cfgFilePath);
-        data = Json.parse(content);
-    } catch (ve:ValueException) {
-        if (ve.message != null) {
-            throw('Got error processing ${cfgFilePath}.\n${ve}');
-        }
-        throw ve;
-    }
-    return data;
+	var data = null;
+	var cfgFilePath = haxe.macro.Context.definedValue('tiny-profiler-cfg-file');
+	cfgFilePath = cfgFilePath.trim();
+	if (cfgFilePath.startsWith('"')) {
+		cfgFilePath = cfgFilePath.replace('"', '');
+	}
+	if (cfgFilePath.startsWith("'")) {
+		cfgFilePath = cfgFilePath.replace("'", "");
+	}
+	if (cfgFilePath == null) {
+		return null;
+	}
+	try {
+		var content = sys.io.File.getContent(cfgFilePath);
+		data = Json.parse(content);
+	} catch (ve:ValueException) {
+		if (ve.message != null) {
+			throw('Got error processing ${cfgFilePath}.\n${ve}');
+		}
+		throw ve;
+	}
+	return data;
 }
+#end
 
 /**
  * Create EventId constants from the configuration file.
@@ -66,14 +67,14 @@ function readConfigFile():ConfigData {
  * @return Array<Field>
  */
 macro function createEventIds():Array<Field> {
-    var data = readConfigFile();
+	var data = readConfigFile();
 	var metricId = 0;
 	var fields = Context.getBuildFields();
+    var eventsConstFields = new Array<Field>();
 
-	var eventsConstFields = new Array<Field>();
-    if (!Reflect.hasField(data, "events")) {
-        throw "No 'events' property found in configuration file.";
-    }
+	if (!Reflect.hasField(data, "events")) {
+		throw "No 'events' property found in configuration file.";
+	}
 	for (evt in data.events) {
 		// Add final constants of symbol = metricId++
 		eventsConstFields.push({
@@ -96,32 +97,31 @@ macro function createEventIds():Array<Field> {
  * @return Expr
  */
 macro function createInitializer():Expr {
-    var data = readConfigFile();
+	var data = readConfigFile();
 	var rv = new Array<Expr>();
-    var idx = 0;
+	var idx = 0;
 	for (evt in data.events) {
-        var sArr = new Array<String>();
-        sArr.push('EventId');
-        sArr.push(evt.symbol);
-        var d = '${evt.displayName}';
-        rv.push(macro { eventNames[$p{sArr}] = $e{d.formatString(Context.currentPos())}; });
+		var sArr = new Array<String>();
+		sArr.push('EventId');
+		sArr.push(evt.symbol);
+		var d = '${evt.displayName}';
+		rv.push(macro {eventNames[$p{sArr}] = $e{d.formatString(Context.currentPos())};});
 	}
 
 	return macro $b{rv};
 }
 
 function printExpr(e:Expr) {
-    switch(e.expr){
-        case EArray(a,b):
-            trace('$e');
-            ExprTools.iter(a, printExpr);
-            ExprTools.iter(b, printExpr);
-        case EBinop(_,a,b):
-            trace('$e');
-            ExprTools.iter(a, printExpr);
-            ExprTools.iter(b, printExpr);
-        case _:
-            trace('$e');
-    }
+	switch (e.expr) {
+		case EArray(a, b):
+			trace('$e');
+			ExprTools.iter(a, printExpr);
+			ExprTools.iter(b, printExpr);
+		case EBinop(_, a, b):
+			trace('$e');
+			ExprTools.iter(a, printExpr);
+			ExprTools.iter(b, printExpr);
+		case _:
+			trace('$e');
+	}
 }
-#end
